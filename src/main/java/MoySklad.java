@@ -13,8 +13,9 @@ public class MoySklad {
         System.out.println("Enter full path to file:");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String fileName = reader.readLine();
+        try
+        {
         InputStream inStream = new FileInputStream(fileName);
-
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         InputStreamReader isr = new InputStreamReader(inStream, Charset.forName("UTF-8"));
         BufferedReader br = new BufferedReader(isr);
@@ -33,6 +34,10 @@ public class MoySklad {
                 System.out.println(me.getKey() + " " + me.getValue() + " " + map.get(me.getValue()));
             }
         }
-
+        }
+        catch (Exception e)
+        {
+            System.out.println("An error occurred while trying to open the file. Please check the file path.");
+        }
     }
 }
